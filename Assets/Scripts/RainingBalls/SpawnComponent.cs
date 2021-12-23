@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using RainingBalls.ObjectPool;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RainingBalls
 {
@@ -9,18 +10,15 @@ namespace RainingBalls
         [SerializeField] private BoxCollider2D _area;
         [SerializeField] private GameObject _prefabToSpawn;
         [SerializeField] private float _timeBetweenSpawns;
+        [SerializeField] private BallChooser _chooser;
 
         private float _halfAreaSize;
 
         private bool _isPlaying;
 
-        private void Start()
-        {
-            _halfAreaSize = _area.size.x / 2f;
-        }
-
         public void StartGame()
         {
+            _halfAreaSize = _area.transform.localScale.x / 2f;
             _isPlaying = true;
             StartCoroutine(Play());
         }
@@ -43,10 +41,11 @@ namespace RainingBalls
         public void Spawn()
         {
             var randomXPosition = Random.Range(-_halfAreaSize, _halfAreaSize);
-            var areaTransform = _area.transform.position;
-            var newPosition = new Vector3(areaTransform.x + randomXPosition, areaTransform.y);
+            var areaTransform = _area.transform.localPosition;
+            var newPosition = new Vector3(randomXPosition, areaTransform.y);
 
-            Pool.Instance.Get(_prefabToSpawn, newPosition);
+            var ball = Pool.Instance.Get(_prefabToSpawn, newPosition);
+            ball.GetComponentInChildren<Image>().sprite = _chooser.GetRandomBall();
         }
     }
 }
