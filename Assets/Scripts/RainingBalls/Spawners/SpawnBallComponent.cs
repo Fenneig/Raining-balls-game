@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using RainingBalls.ObjectPool;
 using UnityEngine;
 using UnityEngine.UI;
+using RainingBalls.Utils;
 
-namespace RainingBalls
+namespace RainingBalls.Spawners
 {
-    public class SpawnComponent : MonoBehaviour
+    public class SpawnBallComponent : MonoBehaviour
     {
         [SerializeField] private BoxCollider2D _area;
         [SerializeField] private GameObject _prefabToSpawn;
@@ -36,15 +36,14 @@ namespace RainingBalls
                 yield return new WaitForSeconds(_timeBetweenSpawns);
             }
         }
-
-        [ContextMenu("Spawn")]
-        public void Spawn()
+        
+        private void Spawn()
         {
             var randomXPosition = Random.Range(-_halfAreaSize, _halfAreaSize);
             var areaTransform = _area.transform.localPosition;
             var newPosition = new Vector3(randomXPosition, areaTransform.y);
 
-            var ball = Pool.Instance.Get(_prefabToSpawn, newPosition);
+            var ball = SpawnUtil.Spawn(_prefabToSpawn, newPosition);
             ball.GetComponentInChildren<Image>().sprite = _chooser.GetRandomBall();
         }
     }

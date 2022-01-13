@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RainingBalls
+namespace RainingBalls.Spawners
 {
     public class BallChooser : MonoBehaviour
     {

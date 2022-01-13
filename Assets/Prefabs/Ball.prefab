@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1981406731}
   - component: {fileID: -9028977010013568773}
   - component: {fileID: 1655301999667591428}
+  - component: {fileID: -6995241988081163415}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
@@ -190,6 +191,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: -6995241988081163415}
+        m_MethodName: Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1981406731}
         m_MethodName: Release
         m_Mode: 1
@@ -217,3 +229,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 50
+--- !u!114 &-6995241988081163415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224321406949806129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56842b9651b5417888d1d913d6b0c96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particle: {fileID: 5573897954150554627, guid: 363aafe6f5b4e4f4ba272d3eb83b25c2,
+    type: 3}
+  _rectTransform: {fileID: 6474668114560791499}
+  _image: {fileID: 438830231}

@@ -1,27 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace RainingBalls.ObjectPool
 {
     public class Pool : MonoBehaviour
     {
-
         private readonly Dictionary<int, Queue<PoolItem>> _items = new Dictionary<int, Queue<PoolItem>>();
         private static Pool _instance;
         private static Canvas _canvas;
-        private static GameObject _pool;
+        private static bool _isInitialized;
+        private const string ContainerName = "###OBJECT_POOL###";
 
         public static Pool Instance
         {
             get
             {
-                if (_instance == null)
-                {
-                    var go = new GameObject("ObjectPool");
-                    _instance = go.AddComponent<Pool>();
-                }
+                if (_instance == null) _instance = new GameObject().AddComponent<Pool>();
 
                 return _instance;
             }
@@ -43,25 +38,26 @@ namespace RainingBalls.ObjectPool
                 return pooledItem.gameObject;
             }
 
-            var instance = Instantiate(go, _pool.transform);
+            var instance = Instantiate(go, _instance.transform);
             var poolItem = instance.GetComponent<PoolItem>();
             instance.transform.localPosition = position;
             poolItem.Retain(id, this);
 
 
-            return instance;
+            return instance.gameObject;
         }
 
         private void InitComponent()
         {
-            if (_canvas == null)
-                _canvas = FindObjectsOfType<Canvas>().FirstOrDefault(canvas => canvas.CompareTag("PlayCanvas"));
+            if (_isInitialized) return;
 
-            if (_pool == null)
-            {
-                _pool = Instantiate(gameObject, _canvas.transform);
-                _pool.name = "###OBJECT_POOL###";
-            }
+            _canvas = FindObjectsOfType<Canvas>().FirstOrDefault(canvas => canvas.CompareTag("PlayCanvas"));
+            _instance.transform.parent = _canvas.transform;
+            _instance.name = ContainerName;
+            _instance.transform.localScale = Vector3.one;
+            _instance.transform.position = Vector3.zero;
+
+            _isInitialized = true;
         }
 
         private Queue<PoolItem> RequireQueue(int id)

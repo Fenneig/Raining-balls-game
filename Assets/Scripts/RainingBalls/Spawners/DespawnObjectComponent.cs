@@ -1,7 +1,7 @@
 ﻿using RainingBalls.ObjectPool;
 using UnityEngine;
 
-namespace RainingBalls
+namespace RainingBalls.Spawners
 {
     public class DespawnObjectComponent : MonoBehaviour
     {
