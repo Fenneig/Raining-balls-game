@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RainingBalls
+namespace RainingBalls.GoBased
 {
     public class TriggerZoneExtendComponent : MonoBehaviour
     {
