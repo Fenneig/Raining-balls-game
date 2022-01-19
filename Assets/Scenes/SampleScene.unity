@@ -597,7 +597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 814475373}
+      - m_Target: {fileID: 814475374}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -781,14 +781,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 814475370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0eb7995834b445b8c816c02c78579e1, type: 3}
+  m_Script: {fileID: 11500000, guid: e13b3625ded263d42bddab60112b5c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _area: {fileID: 814475371}
-  _prefabToSpawn: {fileID: 5224321406949806129, guid: 6e96736ecc8857c458428a624ccef30b,
-    type: 3}
-  _timeBetweenSpawns: 2
-  _chooser: {fileID: 814475375}
+  _playCanvas: {fileID: 87501868}
+  _isTopZone: 1
 --- !u!114 &814475374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,11 +795,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 814475370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac322df54b474af29dfd147267883226, type: 3}
+  m_Script: {fileID: 11500000, guid: f0eb7995834b445b8c816c02c78579e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playCanvas: {fileID: 87501868}
-  _isTopZone: 1
+  _area: {fileID: 814475371}
+  _prefabToSpawn: {fileID: 5224321406949806129, guid: 6e96736ecc8857c458428a624ccef30b,
+    type: 3}
+  _timeBetweenSpawns: 1
+  _chooser: {fileID: 814475375}
 --- !u!114 &814475375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 814475373}
+      - m_Target: {fileID: 814475374}
         m_MethodName: StopGame
         m_Mode: 1
         m_Arguments:
@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1656912019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac322df54b474af29dfd147267883226, type: 3}
+  m_Script: {fileID: 11500000, guid: e13b3625ded263d42bddab60112b5c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playCanvas: {fileID: 87501868}

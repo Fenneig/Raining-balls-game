@@ -1,4 +1,5 @@
 ﻿using RainingBalls.Data;
+using RainingBalls.Effects;
 using RainingBalls.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,8 @@ namespace RainingBalls.GoBased
         {
             PlayerData.Instance.Score++;
             var myTransform = new Vector3(_rectTransform.anchoredPosition.x, _rectTransform.anchoredPosition.y);
-            SpawnUtil.Spawn(_particle, myTransform);
+            var particle = SpawnUtil.Spawn(_particle, myTransform);
+            Recolorer.RecolorParticle(particle.GetComponent<ParticleSystem>(), _image);
         }
     }
 }

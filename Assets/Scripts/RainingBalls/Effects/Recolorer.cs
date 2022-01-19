@@ -5,13 +5,14 @@ namespace RainingBalls.Effects
 {
     public static class Recolorer
     {
-        public static void RecolorParticle(ParticleSystem particle, Color color)
+        public static void RecolorParticle(ParticleSystem particle, Image image)
         {
             var main = particle.main;
+            var color = GetColorFromImage(image);
             main.startColor = new ParticleSystem.MinMaxGradient(color);
         }
 
-        public static Color GetColorFromImage(Image image)
+        private static Color GetColorFromImage(Image image)
         {
             var x = (int) image.rectTransform.rect.width / 2;
             var y = (int) image.rectTransform.rect.height / 2;
